@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>学习React!! </title>
+</head>
+<body>
+
+
+<div id="app"></div>
+<script src="bower_components/react/react.min.js"></script>
+<script src="bower_components/react/react-with-addons.js"></script>
+<script src="bower_components/react/react-dom.js"></script>
+<script src="bower_components/babel/browser.js"></script>
+<script type="text/babel">
+
+    var EasyForm = React.createClass({
+        mixins: [ React.addons.LinkedStateMixin ],
+        getInitialState:function () {
+            return {
+                message: "react is awesome!",
+                isReactAwesome: true,
+            }
+        },
+        render:function () {
+            return (
+                <div>
+                    <h1>我想说：{this.state.message}</h1>
+                    <h2>React是不是很好用？{this.state.isReactAwesome? "非常好用":"一般般...."}</h2>
+                    <input type="text" valueLink={this.linkState("message")} />
+                    <br />
+                    <input type="checkbox" checkedLink={this.linkState("isReactAwesome")} />
+                    <SubComp messageLink={this.linkState("message")} linkedLink={this.linkState("isReactAwesome")} />
+                </div>
+            )
+        }
+    });
+    var SubComp = React.createClass({
+        render:function () {
+            return (
+                <div>
+                    <h1>这是一个自组件</h1>
+                    <SubSubComp {...this.props} />
+                </div>
+            )
+        }
+    });
+
+    var SubSubComp = React.createClass({
+        render:function () {
+            return (
+                <div>
+                    <p>你想说什么？</p>
+                    <input type="text" valueLink={ this.props.messageLink } />
+                    <p>你稀罕React什么？</p>
+                    <input type="checkbox" checkedLink={ this.props.linkedLink } />
+                </div>
+            )
+        }
+    })
+
+    ReactDOM.render(<EasyForm />, document.getElementById("app"));
+
+
+</script>
+</body>
+</html>

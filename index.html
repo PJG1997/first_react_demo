@@ -1,0 +1,56 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>学习React!! </title>
+</head>
+<body>
+
+
+    <div id="app"></div>
+    <script src="bower_components/react/react.min.js"></script>
+    <script src="bower_components/react/react-dom.js"></script>
+    <script src="bower_components/babel/browser.js"></script>
+    <script type="text/babel">
+         var MessageBox = React.createClass({
+             alertMe: function() {
+                alert("你刚才点了我一下....");
+             },
+             render:function() {
+
+                    var submessages = [];
+                    for (var ii=0; ii<10; ii++) {
+                        submessages.push(<Submessage />)
+                    
+                }
+                 return (<div><h1 onClick={this.alertMe}> Hello World!!!!</h1>
+                            {submessages}
+                      </div>)
+             }
+         });
+
+         var Submessage = React.createClass({
+            render: function() {
+            return (<div><h3>写代码很有意思</h3>
+                <Footer /></div>
+            )
+            }
+         });
+
+         var Footer = React.createClass({
+            render: function() {
+            return (
+                <small>因为我们在用代码在创造</small>
+            )
+        }
+     });
+          ReactDOM.render(<MessageBox />, document.getElementById("app"), function() {
+              console.log("渲染完成！！！！");
+          })
+        
+    </script>
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,1 @@
+react牵涉到的知识点：组件状态state，component生命周期，父组件传给子组件props，ref连接。

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>学习React!! </title>
+</head>
+<body>
+
+
+<div id="app"></div>
+<script src="bower_components/react/react.min.js"></script>
+<script src="bower_components/react/react-dom.js"></script>
+<script src="bower_components/babel/browser.js"></script>
+<script type="text/babel">
+    var MessageBox = React.createClass({
+
+        getInitialState: function () {
+            console.log("getInitialState");
+            return {
+                count: 0,
+            }
+        },
+        shouldComponentUpdate:function(nextProps, nextState) {
+            console.log("componentShouldUpdate");
+            return true;
+        },
+        componentWillUpdate:function(nextProps, nextState) {
+            console.log("componentWillUpdate");
+        },
+        componentDidUpdate:function() {
+            console.log("componentDidUpdate");
+        },
+        doUpdate:function() {
+            this.setState({
+                count: this.state.count + 1,
+            });
+        },
+        killMySelf:function() {
+            ReactDOM.unmountComponentAtNode(document.getElementById("app"));
+        },
+        render: function () {
+            console.log("渲染");
+            return (
+                <div>
+                    <h1>计数：{this.state.count}</h1>
+                    <button onClick={this.killMySelf}>卸载掉这个组件</button>
+                    <button onClick={this.doUpdate}>手动更新一下组件：(包括子组件)</button>
+                    <Submessage count={this.state.count} />
+                </div>
+            )
+        }
+    });
+
+    var Submessage = React.createClass({
+        componentWillReceiveProps:function(nextProps) {
+            console.log("子组件将要获得prop");
+        },
+        shouldComponentUpdate:function(nextProps, nextState) {
+            console.log(nextProps);
+            if (nextProps.count > 5) return false;
+            return true;
+        },
+        render: function () {
+            return (<h3>{"当前计数是：" + this.props.count}</h3>)
+        }
+    });
+
+    var messageBox = ReactDOM.render(<MessageBox />,
+        document.getElementById("app"),
+        function() {
+            console.log("渲染完成！！！！");
+        }
+    );
+
+</script>
+</body>
+</html>

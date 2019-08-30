@@ -1,0 +1,48 @@
+Arguments: 
+  /usr/local/bin/node /usr/local/bin/yarn add --save-dev gulp gulp-browserify gulp-concat gulp-react gulp-connect lodash reactify
+
+PATH: 
+  /anaconda3/bin:/anaconda3/condabin:/Users/pengjinguo/ImageMagick-7.0.8/bin:/Users/pengjinguo/phantomjs-2.1.1-macosx/bin:/Library/Frameworks/Python.framework/Versions/3.6/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Library/Frameworks/Mono.framework/Versions/Current/Commands:/Applications/Wireshark.app/Contents/MacOS:/Users/pengjinguo/apache-maven-3.5.3/bin:/Users/pengjinguo/mongodb-osx-x86_64-3.6.4/bin:/Library/Java/JavaVirtualMachines/jdk1.8.0_161.jdk/Contents/Home/bin:/usr/local/Cellar/hadoop-2.7.5/sbin:/usr/local/Cellar/hadoop-2.7.5/bin:/usr/local/Cellar/scala/2.12.6/bin:/usr/local/spark-2.3.0/bin:/usr/local/Cellar/kafka/1.1.0/bin:/Library/Frameworks/Mono.framework/Versions/5.10.1/bin:/Users/pengjinguo/firefox_sslkey.log:/Users/pengjinguo/firefoxDriver/::/Users/pengjinguo/jython2.7.0/bin:/Users/pengjinguo/jython2.7.0/Lib:/usr/local/bin:/usr/local/etc/nginx:/anaconda3/bin
+
+Yarn version: 
+  1.10.1
+
+Node version: 
+  10.11.0
+
+Platform: 
+  darwin x64
+
+Trace: 
+  Error: EACCES: permission denied, mkdir '/Users/pengjinguo/react/reactQa/node_modules/aproba'
+
+npm manifest: 
+  {
+    "name": "y",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+      "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "author": "",
+    "license": "ISC",
+    "dependencies": {
+      "react": "^16.9.0"
+    },
+    "devDependencies": {
+      "gulp": "^4.0.2",
+      "gulp-browserify": "^0.5.1",
+      "gulp-concat": "^2.6.1",
+      "gulp-connect": "^5.7.0",
+      "gulp-react": "^4.0.0",
+      "lodash": "^4.17.15",
+      "reactify": "^1.1.1"
+    }
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile

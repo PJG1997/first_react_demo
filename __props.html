@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>学习React!! </title>
+</head>
+<body>
+
+
+<div id="app"></div>
+<script src="bower_components/react/react.min.js"></script>
+<script src="bower_components/react/react-dom.js"></script>
+<script src="bower_components/babel/browser.js"></script>
+<script type="text/babel">
+    var MessageBox = React.createClass({
+
+        getInitialState: function () {
+            return {
+                isVisible: true,
+                titleMessage: "",
+                subMessages:[
+                    "我会代码搬砖",
+                    "以及花式搬砖",
+                    "不说了，工头叫我回去搬砖了....",
+                ]
+            }
+        },
+        render: function () {
+
+            var styleObject = {
+                display: this.state.isVisible? "block":"none",
+            };
+
+            return (
+                <div>
+                    <h1 style={styleObject}>{this.props.titleMessage}</h1>
+                    <Submessage messages={this.state.subMessages}/>
+                </div>
+            )
+        }
+    });
+
+    var Submessage = React.createClass({
+        propTypes:{
+            messages: React.PropTypes.array.isRequired,
+        },
+        getDefaultProps:function() {
+            return {
+                messages: ["默认的子消息"],
+            }
+        },
+        render: function () {
+            var msgs = [];
+            this.props.messages.forEach(function (message, index){
+                msgs.push(<p>码农说：{message}</p>)
+            });
+            return (<div>{msgs}</div>)
+        }
+    });
+
+    var title = "你好世界（来自props呢）";
+
+    var messageBox = ReactDOM.render(<MessageBox titleMessage={title}/>,
+        document.getElementById("app"),
+        function() {
+            console.log("渲染完成！！！！");
+        }
+    );
+
+</script>
+</body>
+</html>

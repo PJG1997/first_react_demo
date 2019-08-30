@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>学习React!! </title>
+</head>
+<body>
+
+
+<div id="app"></div>
+<script src="bower_components/react/react.min.js"></script>
+<script src="bower_components/react/react-dom.js"></script>
+<script src="bower_components/babel/browser.js"></script>
+<script type="text/babel">
+
+    var ClickApp = React.createClass({
+
+        getInitialState:function () {
+            return {
+                clickCount: 0,
+            }
+        },
+
+        handleClick: function() {
+            this.setState({
+                clickCount: this.state.clickCount + 1,
+            })
+        },
+
+        render: function () {
+            return (
+                <div>
+                    <h2>点击下面按钮</h2>
+                    <button onClick={this.handleClick}>点击我</button>
+                    <p>你一共点击了{this.state.clickCount}次</p>
+                </div>
+            )
+        }
+    });
+
+    var clickComponent = ReactDOM.render(<ClickApp />, document.getElementById("app"), function () {
+    });
+
+
+</script>
+</body>
+</html>
